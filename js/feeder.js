@@ -19,28 +19,31 @@ var App = angular.module('FeedApp', []);
 		//$scope.feeds = Feed.parseFeed('http://stamurl');
 		
 		$scope.addFeed=function(){      
-			//alert($scope.objectToFeed.mail);		
-			$scope.objectToFeed.hash = md5($scope.objectToFeed.mail); 
-			//alert($scope.hash);
-			
-			
-			//$scope.feeds.push($scope.objectToFeed);
-			/*
-			$scope.feeds.push({
-				mail: $scope.objectToFeed.mail,
-				message: $scope.objectToFeed.msg,
-				hash: $scope.objectToFeed.hash
-    });
-	*/
-	$scope.feeds.splice(0, 0, 
-				{ mail: $scope.objectToFeed.mail,
-				message: $scope.objectToFeed.msg,
-				hash: $scope.objectToFeed.hash}
-				);
-	
-	//alert(JSON.stringify($scope.feeds));
+			//alert($scope.objectToFeed.mail);	
 
+			if($scope.objectToFeed.mail.length > 0 && $scope.objectToFeed.msg != "")
+			{
+				$scope.objectToFeed.hash = md5($scope.objectToFeed.mail); 
+				//alert($scope.hash);
+				
+				
+				//$scope.feeds.push($scope.objectToFeed);
+				/*
+				$scope.feeds.push({
+					mail: $scope.objectToFeed.mail,
+					message: $scope.objectToFeed.msg,
+					hash: $scope.objectToFeed.hash
+				});
+				*/
+				$scope.feeds.splice(0, 0, 
+					{ mail: $scope.objectToFeed.mail,
+					message: $scope.objectToFeed.msg,
+					hash: $scope.objectToFeed.hash}
+					);
+		
+		//alert(JSON.stringify($scope.feeds));
 		}
+		};
 		
 	}]);
 
